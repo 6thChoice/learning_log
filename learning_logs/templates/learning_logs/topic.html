@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>This document is about topic</title>
+</head>
+<body>
+
+{% extends 'learning_logs/base.html' %}
+{% block header %}
+    <h2>{{ topic }}</h2>
+{% endblock header %}
+
+
+{% block content %}
+
+    <p>话题:{{ topic }}</p>
+    <p>讨论:</p>
+    <p>
+        <a href="{% url 'learning_logs:new_entry' topic.id %}">发表观点</a>
+    </p>
+
+    {% for entry in entries %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h6>
+                    {{ entry.date_added|date:'M d, Y H:i' }}
+                    <small>
+                        由 {{ entry.owner }} 提出
+                    </small>
+                    <!-- 普通用户无法编辑已经发表的观点 -->
+                    <!--
+                    <small>
+                        <a href="{% url 'learning_logs:edit_entry' entry.id %}">编辑观点</a>
+                    </small>
+                    -->
+                </h6>
+            </div>
+            <div class="panel-body">
+                {{ entry.text|linebreaks }}
+            </div>
+        </div><!-- panel -->
+    {% empty %}
+        成为第一位发言者！
+    {% endfor %}
+
+
+
+{% endblock content %}
+
+</body>
+</html>

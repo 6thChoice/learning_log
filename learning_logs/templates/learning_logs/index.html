@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+{% extends "learning_logs/base.html"%}
+{% block header %}
+    <div class="jumbotron">
+        <h1>讨论板</h1>
+        <small>
+            from Zhou
+        </small>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <h2>
+        <a href="{% url 'users:register' %}">注册账号</a> ，提出问题或者参与讨论。
+    </h2>
+    <h2>
+        您的到来是本站的荣幸。
+    </h2>
+    <h3>
+        点击上方“话题”，查看已经提出的话题。
+    </h3>
+    <h3>
+        本站正在测试中，欢迎大家折磨它！ :)
+    </h3>
+
+{% endblock content %}
+
+</body>
+</html>
